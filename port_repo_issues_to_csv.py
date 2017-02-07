@@ -34,12 +34,12 @@ def menu(answer):
 
 def validate_info():
     global github_user
-    github_user = 'MiaArmstrong'  #input('Enter your Github user ID: ')
+    github_user = input('Enter your Github user ID: ')
     global github_password
-    github_password = 'killer78'  #input('Enter your Github password: ')
+    github_password = input('Enter your Github password: ')
     #print('Enter the company/user name and the Repository name')
     global repo
-    repo = 'ultratesting/doc-site'  #input('(Format is username/repo, ex: ultratesting/knowledge-tree): ')   #format is username/repo
+    repo = input('(Format is username/repo, ex: ultratesting/knowledge-tree): ')   #format is username/repo
     global issues_for_repo
     issues_for_repo = 'https://api.github.com/repos/%s/issues' % repo
     global authorization
