@@ -37,7 +37,7 @@ def validate_info():
     github_user = input('Enter your Github user ID: ')
     global github_password
     github_password = input('Enter your Github password: ')
-    #print('Enter the company/user name and the Repository name')
+    print('Enter the company/user name and the Repository name')
     global repo
     repo = input('(Format is username/repo, ex: ultratesting/knowledge-tree): ')   #format is username/repo
     global issues_for_repo
