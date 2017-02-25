@@ -9,11 +9,12 @@ import csv
 import requests
 import json
 
+
 txtout = open('data.json', 'w')
 
 
 def menu(answer):
-    if answer != 5:
+    if answer != 4:
         print('***Menu***')
         print('1) Export all issues from a Repository')
         print('2) Export issues sorted by Label')
@@ -42,10 +43,11 @@ def validate_info():
     repo = input('(Format is username/repo, ex: ultratesting/knowledge-tree): ')   #format is username/repo
     global issues_for_repo
     issues_for_repo = 'https://api.github.com/repos/%s/issues' % repo
+    ARGS = "?state=all"
     global authorization
     authorization = (github_user, github_password)
     global response
-    response = requests.get(issues_for_repo, auth=authorization)
+    response = requests.get(issues_for_repo + ARGS, auth=authorization)
     file_setup()
     return response
 
@@ -70,7 +72,7 @@ def write_issues_all(r):
         global issues
         issues = 0
         issues += 1
-        csvout.writerow([issue['label'], issue['number'], issue['title'].encode('utf-8'), issue['body'].encode('utf-8'),issue['state'].encode('utf-8'), issue['created_at'], issue['updated_at'], issue['user']['login']])
+        csvout.writerow(['', issue['number'], issue['title'].encode('utf-8'), issue['body'].encode('utf-8'),issue['state'].encode('utf-8'), issue['created_at'], issue['updated_at'], issue['user']['login']])
 
     if 'link' in r.headers:
         pages = dict(
@@ -165,5 +167,6 @@ def file_close():
 
 menu(0)
 
-
+#kick off the event loop
+#root.mainloop()
 
